@@ -1,0 +1,5 @@
+# berkas sementara
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
