@@ -92,18 +92,22 @@ paling menahan.
 
 ## Anggota kelompok
 
-> **Perlu diisi.** Ganti bagian ini dengan nama dan NIM sebenarnya sebelum dikumpulkan.
-> Sesuaikan juga kolom FR dengan hasil pembagian tugas yang disepakati.
-
 | Anggota | Nama | NIM | Tanggung jawab (FR) | Diagram |
 |:-------:|------|-----|---------------------|---------|
-| 1 | _(isi nama)_ | _(isi NIM)_ | FR-01, FR-02 — pencatatan & pengelolaan sesi | 1 Activity + 1 Sequence |
-| 2 | _(isi nama)_ | _(isi NIM)_ | FR-03, FR-08 — dasbor & laporan | 1 Activity + 1 Sequence |
-| 3 | _(isi nama)_ | _(isi NIM)_ | FR-04, FR-05, FR-06 — mesin K-Means & penempatan | 1 Activity + 1 Sequence |
-| 4 | _(isi nama)_ | _(isi NIM)_ | FR-07, FR-09 — dataset & pengaturan | 1 Activity + 1 Sequence |
-| 5 | _(isi nama)_ | _(isi NIM)_ | FR-10, FR-11 — panduan awal & saran kontekstual | 1 Activity + 1 Sequence |
+| 1 | Yuniar Zahra Wiyani | 60124004 | FR-01, FR-02 — pencatatan & pengelolaan sesi | 1 Activity + 1 Sequence |
+| 2 | Aninda Rizqi Amelia | 60124009 | FR-03, FR-08 — dasbor & laporan | 1 Activity + 1 Sequence |
+| 3 | Maheswari Pasa Putri Syamsudar | 60124010 | FR-04, FR-05 — mesin K-Means & visualisasi hasil | 1 Activity + 1 Sequence |
+| 4 | Hasan | 60124013 | FR-06, FR-07 — penempatan posisi & pengelolaan dataset | 1 Activity + 1 Sequence |
+| 5 | Sifa Sabrina | 60124023 | FR-09, FR-10, FR-11 — pengaturan, panduan awal, saran | 1 Activity + 1 Sequence |
 
 Use Case Diagram dan Class Diagram dikerjakan kolaboratif oleh seluruh anggota (Tahap 3).
+
+**Ketentuan yang sudah dipenuhi pembagian ini:**
+
+- Setiap anggota memegang minimal satu FR (spesifikasi bagian 8).
+- Setiap anggota bertanggung jawab atas minimal satu Activity Diagram dan satu Sequence Diagram.
+- Pembagian mengikuti batas modul, bukan batas penulisan laporan, sehingga kontribusi kode dapat
+  ditelusuri lewat riwayat commit repositori kode.
 
 ---
 
@@ -136,3 +140,4 @@ struktur variabel dan metode analisis tidak berubah. Rincian ada di
 | Tanggal | Versi | Perubahan |
 |---------|-------|-----------|
 | 21 November 2026 | v1.0 | Laporan Tahap 1 dan Tahap 2 disusun; lampiran dataset ditambahkan |
+| 21 November 2026 | v1.1 | Identitas kelompok dan pembagian tugas per FR diisi |

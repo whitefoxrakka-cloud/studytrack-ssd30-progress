@@ -39,8 +39,8 @@ Sistem berjalan sepenuhnya di sisi peramban: tidak ada server aplikasi dan tidak
 | Aktor | Jenis | Deskripsi | Hak/interaksi utama |
 |-------|-------|-----------|---------------------|
 | **Mahasiswa** | Aktor utama | Pengguna yang mencatat sesi belajar dan membaca hasil analisis | Seluruh FR kecuali pengelolaan dataset lanjutan |
-| **Pembimbing Akademik** | Aktor sekunder | Membaca ringkasan kebiasaan dan mencetak laporan | FR-03, FR-07 (baca & cetak) |
-| **Pengelola Data** | Aktor sekunder | Menyiapkan dataset survei yang menjadi dasar clustering | FR-06 (impor/ekspor/bersihkan dataset) |
+| **Pembimbing Akademik** | Aktor sekunder | Membaca ringkasan kebiasaan dan mencetak laporan | FR-03, FR-08 (baca & cetak) |
+| **Pengelola Data** | Aktor sekunder | Menyiapkan dataset survei yang menjadi dasar clustering | FR-07 (impor/ekspor/bersihkan dataset) |
 
 **Catatan:** pada versi web ini ketiga peran memakai antarmuka yang sama tanpa pemisahan hak akses. Pemisahan peran (login, peran dosen read-only) direncanakan pada Tahap 5 versi final bersama basis data terpusat. Aktor "sistem" seperti *service worker* dan mesin K-Means tidak dihitung sebagai aktor karena tidak memiliki tujuan sendiri.
 
@@ -267,6 +267,23 @@ Sebelas kebutuhan fungsional berikut disusun dari rumusan masalah Tahap 1. Setia
 | FR-09 | Pengaturan aplikasi | Mahasiswa | Should | Selesai |
 | FR-10 | Panduan awal | Mahasiswa | Could | Selesai |
 | FR-11 | Saran kontekstual | Mahasiswa | Could | Selesai |
+
+### Penanggung jawab kebutuhan fungsional
+
+Pembagian mengikuti **batas modul**, bukan batas penulisan laporan, agar kontribusi setiap anggota
+dapat ditelusuri lewat riwayat commit repositori kode.
+
+| Anggota | Nama | NIM | FR | Modul utama | Diagram |
+|:-------:|------|-----|----|-------------|---------|
+| 1 | Yuniar Zahra Wiyani | 60124004 | FR-01, FR-02 | `vJurnal`, `formSesi`, `csvSesi` | 1 Activity + 1 Sequence |
+| 2 | Aninda Rizqi Amelia | 60124009 | FR-03, FR-08 | `vDasbor`, `vLaporan` | 1 Activity + 1 Sequence |
+| 3 | Maheswari Pasa Putri Syamsudar | 60124010 | FR-04, FR-05 | `kmeans.js`, `vAnalisis`, `grafik.js` | 1 Activity + 1 Sequence |
+| 4 | Hasan | 60124013 | FR-06, FR-07 | `tempatkan`, `vDataset` | 1 Activity + 1 Sequence |
+| 5 | Sifa Sabrina | 60124023 | FR-09, FR-10, FR-11 | `bukaAtur`, `bukaKenalan`, `wawasan` | 1 Activity + 1 Sequence |
+
+Setiap anggota memegang minimal satu FR dan minimal satu Activity Diagram serta satu Sequence
+Diagram, sesuai ketentuan spesifikasi bagian 3 dan 8. Use Case Diagram dan Class Diagram dikerjakan
+kolaboratif pada Tahap 3.
 
 Selain kesebelas FR di atas, sistem juga memiliki **kebutuhan teknis pendukung** yang tidak dihitung sebagai FR karena tidak menambah kemampuan bisnis: tema gelap/terang, animasi antarmuka, dan mode luring (service worker). Ketiganya dibahas pada NFR.
 
