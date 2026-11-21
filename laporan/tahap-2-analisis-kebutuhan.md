@@ -1,9 +1,11 @@
 # Laporan Tahap 2 — Analisis Kebutuhan Sistem
 
-**Proyek:** StudyTrack — Aplikasi Analisis Kebiasaan Belajar Mahasiswa dengan K-Means Clustering
-**Mata kuliah:** Rekayasa Perangkat Lunak (SSD30)
-**Program Studi:** Data Sains · Fakultas Sains dan Teknologi
-**Institusi:** UIN K.H. Abdurrahman Wahid Pekalongan
+| | |
+|---|---|
+| **Proyek** | StudyTrack — Aplikasi Analisis Kebiasaan Belajar Mahasiswa dengan K-Means Clustering |
+| **Mata kuliah** | Rekayasa Perangkat Lunak (SSD30) |
+| **Program studi** | Data Sains · Fakultas Sains dan Teknologi |
+| **Institusi** | UIN K.H. Abdurrahman Wahid Pekalongan |
 
 | | |
 |---|---|
