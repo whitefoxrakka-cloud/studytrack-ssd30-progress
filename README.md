@@ -19,14 +19,27 @@ implementasi tetap bersih dan mudah ditelusuri.
 
 ---
 
+## Keluaran Tahap 1–4
+
+| No | Keluaran | Berkas |
+|:--:|----------|--------|
+| 1 | Laporan Bab I–IV format Word | [study-track-bab-1-4.docx](laporan/study-track-bab-1-4.docx) |
+| 2 | Laporan Bab I–IV format PDF (70 halaman) | [study-track-bab-1-4.pdf](laporan/study-track-bab-1-4.pdf) |
+| 3 | Dokumen perancangan UML (Tahap 3) | [tahap-3-perancangan-uml.md](laporan/tahap-3-perancangan-uml.md) |
+| 4 | Dokumen arsitektur, basis data, antarmuka (Tahap 4) | [tahap-4-arsitektur-basis-data.md](laporan/tahap-4-arsitektur-basis-data.md) |
+| 5 | Presentasi Tahap 1–4 (22 slide) | [study-track-tahap-1-4.pptx](presentasi/study-track-tahap-1-4.pptx) |
+| 6 | Logbook mingguan per anggota | [logbook/](logbook/README.md) |
+
+---
+
 ## Status pengerjaan
 
 | Tahap | Nama tahap | Keluaran | Status | Dokumen |
 |:-----:|-----------|----------|:------:|---------|
 | 1 | Identifikasi Masalah | Deskripsi masalah dan gambaran solusi | **Selesai** | [Buka](laporan/tahap-1-identifikasi-masalah.md) |
 | 2 | Analisis Kebutuhan Sistem | Dokumen analisis kebutuhan | **Selesai** | [Buka](laporan/tahap-2-analisis-kebutuhan.md) |
-| 3 | Perancangan Sistem (UML) | Use Case, Activity, Sequence, Class Diagram | Belum | — |
-| 4 | Perancangan Sistem & Basis Data | Arsitektur, ERD, rancangan antarmuka | Belum | — |
+| 3 | Perancangan Sistem (UML) | Use Case, Activity, Sequence, Class Diagram | **Selesai** | [Buka](laporan/tahap-3-perancangan-uml.md) |
+| 4 | Perancangan Sistem & Basis Data | Arsitektur, ERD, rancangan antarmuka | **Selesai** | [Buka](laporan/tahap-4-arsitektur-basis-data.md) |
 | 5 | Implementasi Aplikasi | Aplikasi berjalan + source code | Sedang berjalan¹ | [Repo kode](https://github.com/whitefoxrakka-cloud/studytrack-ssd30) |
 | 6 | Pengujian Perangkat Lunak | Dokumen pengujian | Sebagian² | — |
 | 7 | User Acceptance Testing | Dokumen hasil UAT | Belum | — |
@@ -46,7 +59,19 @@ studytrack-ssd30-progress/
 ├─ README.md                                  halaman ini — indeks & status
 ├─ laporan/
 │  ├─ tahap-1-identifikasi-masalah.md         latar belakang, masalah, solusi, pengguna, manfaat
-│  └─ tahap-2-analisis-kebutuhan.md           aktor, 11 FR, 17 NFR, proses bisnis, data, prioritas
+│  ├─ tahap-2-analisis-kebutuhan.md           aktor, 11 FR, 17 NFR, proses bisnis, data, prioritas
+│  ├─ tahap-3-perancangan-uml.md              1 use case, 5 activity, 5 sequence, 1 class diagram
+│  ├─ tahap-4-arsitektur-basis-data.md        arsitektur, ERD + DDL, antarmuka, teknologi, integrasi
+│  ├─ study-track-bab-1-4.docx                laporan lengkap Bab I–IV (Word)
+│  ├─ study-track-bab-1-4.pdf                 laporan lengkap Bab I–IV (PDF)
+│  └─ img/                                    10 tangkapan layar aplikasi
+├─ presentasi/
+│  └─ study-track-tahap-1-4.pptx              presentasi Tahap 1–4
+├─ logbook/
+│  ├─ README.md                               aturan pencatatan & matriks kontribusi
+│  ├─ minggu-00.md                            persiapan: kelompok & tema
+│  ├─ minggu-01.md                            Tahap 1–2 + versi web awal
+│  └─ minggu-02.md                            Tahap 3–4 + laporan + PPT
 └─ lampiran/
    └─ dataset.md                              skema dataset, statistik, cara mengganti dengan data asli
 ```
@@ -87,6 +112,59 @@ paling menahan.
 - Kualitas cluster: silhouette **0,355** (ambang > 0,25), SSE 162, stabil dalam 5 iterasi
 
 → [Baca selengkapnya](laporan/tahap-2-analisis-kebutuhan.md)
+
+---
+
+## Ringkasan Tahap 3
+
+| Komponen | Jumlah | Keterangan |
+|----------|:------:|-----------|
+| Use Case Diagram | 1 | 3 aktor, 15 use case, 6 relasi include/extend |
+| Activity Diagram | 5 | Satu per anggota, sesuai FR yang dipegang |
+| Sequence Diagram | 5 | Satu per anggota, dengan peserta yang sama |
+| Class Diagram | 1 | 10 kelas, semuanya dipetakan ke berkas kode nyata |
+
+Setiap diagram disertai penjelasan yang menyebut **alasan keputusan**, bukan hanya urutan langkah —
+misalnya mengapa validasi diletakkan sebelum penyimpanan, mengapa standardisasi memakai statistik
+dataset dan bukan statistik pengguna.
+
+→ [Baca selengkapnya](laporan/tahap-3-perancangan-uml.md)
+
+---
+
+## Ringkasan Tahap 4
+
+| Komponen | Hasil |
+|----------|-------|
+| Arsitektur | Berlapis empat tingkat: presentasi, logika aplikasi, Data Sains, data |
+| Tabel basis data | 8 tabel + 1 view (`v_rekap_pekan`) |
+| Relasi | 8 relasi, aturan hapus diputuskan per relasi (`CASCADE`, `SET NULL`, `RESTRICT`) |
+| Normalisasi | 3NF, dengan satu denormalisasi yang disadari pada `profil_cluster` |
+| Rancangan antarmuka | 8 layar, 3 titik henti, dua tema dari satu set token |
+| Integrasi Data Sains | Dua mode (peramban dan server) dengan kontrak JSON yang sama |
+
+**Skema basis data sudah diuji, bukan hanya digambar.** DDL dijalankan pada SQLite dan diuji lima
+kasus: `CHECK` menolak durasi 9999 menit dan tidur 30 jam; `RESTRICT` menolak penghapusan dataset yang
+sudah dipakai analisis; `CASCADE` menghapus sesi saat pengguna dihapus; `SET NULL` mempertahankan baris
+analisis dengan `pengguna_id` menjadi `NULL`; dan `v_rekap_pekan` mengembalikan angka yang benar.
+
+→ [Baca selengkapnya](laporan/tahap-4-arsitektur-basis-data.md)
+
+---
+
+## Logbook
+
+Pekerjaan dicatat **per pekan**, bukan per anggota, agar terlihat bagaimana pekerjaan bergerak dari
+pekan ke pekan. Setiap berkas memuat rekap per anggota, rincian harian, keluaran, kendala, dan rencana
+pekan berikutnya.
+
+| Pekan | Rentang | Fokus |
+|:-----:|---------|-------|
+| 0 | 9–15 November 2026 | Pembentukan kelompok dan pengajuan tema |
+| 1 | 16–22 November 2026 | Tahap 1–2, mesin K-Means, versi web awal |
+| 2 | 23–29 November 2026 | Tahap 3–4, laporan Bab I–IV, presentasi |
+
+→ [Buka logbook](logbook/README.md)
 
 ---
 
@@ -141,3 +219,4 @@ struktur variabel dan metode analisis tidak berubah. Rincian ada di
 |---------|-------|-----------|
 | 21 November 2026 | v1.0 | Laporan Tahap 1 dan Tahap 2 disusun; lampiran dataset ditambahkan |
 | 21 November 2026 | v1.1 | Identitas kelompok dan pembagian tugas per FR diisi |
+| 27 November 2026 | v1.2 | Laporan Tahap 3 dan Tahap 4, laporan Bab I–IV (DOCX/PDF), PPT, dan logbook ditambahkan |

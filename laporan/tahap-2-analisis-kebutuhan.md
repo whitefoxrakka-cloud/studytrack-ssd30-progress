@@ -320,29 +320,29 @@ Setiap NFR diberi tolok ukur yang dapat diperiksa, bukan pernyataan sifat.
 ### 5.1 Alur utama
 
 ```mermaid
+%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
-    A["Mahasiswa membuka aplikasi"] --> B{"Sudah ada data sesi?"}
-    B -- Belum --> C["Panduan awal 3 langkah"]
+    A(["Mahasiswa membuka aplikasi"]) --> B{"Sudah ada data sesi?"}
+    B -- Belum --> C["Panduan awal tiga langkah"]
     C --> D["Mencatat sesi belajar"]
-    B -- Sudah --> E["Dasbor: ring target, statistik pekan, grafik 7 hari"]
+    B -- Sudah --> E["Dasbor: ring target, statistik pekan, grafik tujuh hari"]
     D --> E
     E --> F{"Butuh analisis?"}
-    F -- Ya --> G["Tab Analisis: hitung K-Means k=2..5"]
-    G --> H["Standardisasi z-score 6 fitur"]
-    H --> I["Iterasi K-Means sampai stabil"]
-    I --> J["Evaluasi: silhouette, SSE, elbow"]
-    J --> K["Profil tiap cluster + radar"]
-    K --> L["Tempatkan vektor pengguna ke centroid terdekat"]
-    L --> M["Tampilkan posisi + perbandingan per variabel"]
-    M --> N["Saran perbaikan spesifik"]
-    F -- Tidak --> O["Tab Laporan: rekap pekan + proyeksi"]
-    N --> O
-    O --> P["Cetak PDF / ekspor CSV / cadangan JSON"]
+    F -- Ya --> G["Tab Analisis: hitung K-Means"]
+    G --> H["Standardisasi z-score enam fitur"]
+    H --> I["Iterasi sampai konvergen, evaluasi silhouette dan SSE"]
+    I --> J["Profil kelompok, radar, tempatkan posisi pengguna"]
+    J --> K["Tampilkan posisi dan perbandingan per variabel"]
+    K --> L["Saran perbaikan spesifik"]
+    F -- Tidak --> M["Tab Laporan: rekap pekan dan proyeksi"]
+    L --> M
+    M --> N["Cetak PDF, ekspor CSV, atau cadangan JSON"]
 ```
 
 ### 5.2 Alur pengelolaan dataset
 
 ```mermaid
+%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%
 flowchart LR
     A["Dataset bawaan 90 responden"] --> B{"Data survei asli tersedia?"}
     B -- Belum --> C["Dipakai untuk demo dan pengujian"]
@@ -368,19 +368,15 @@ flowchart LR
 ### 5.4 Alur komponen Data Sains
 
 ```mermaid
+%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
-    A["90 responden x 6 fitur"] --> B["Hitung μ dan σ tiap fitur"]
-    B --> C["Z = (x - μ) / σ"]
-    C --> D["Inisialisasi k-means++ bibit 42"]
-    D --> E["Tetapkan titik ke centroid terdekat"]
-    E --> F["Perbarui centroid = rata-rata anggota"]
-    F --> G{"Pergeseran di bawah 1e-6 atau 300 iterasi?"}
-    G -- Belum --> E
-    G -- Ya --> H["Hitung silhouette & SSE"]
-    H --> I["Skor komposit berbobot, HP negatif"]
-    I --> J["Beri nama: Tinggi / Sedang / Perlu Ditingkatkan"]
-    J --> K["Vektor pengguna distandarkan dengan μ, σ dataset"]
-    K --> L["Tempatkan ke centroid terdekat"]
+    A(["Masukan: baris responden"]) --> B["Vektor enam fitur"]
+    B --> C["Standardisasi z-score per kolom"]
+    C --> D["Clustering k-means++ bibit 42"]
+    D --> E["Evaluasi: silhouette dan elbow"]
+    E --> F["Skor berbobot dan penamaan kelompok"]
+    F --> G["Keluaran: model, profil, posisi pengguna"]
+    G --> H(["Selesai"])
 ```
 
 ---

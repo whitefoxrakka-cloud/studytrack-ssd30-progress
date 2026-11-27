@@ -50,6 +50,7 @@ spesifikasi bagian 3 butir 4 dan bagian 8: pengerjaan tidak dipisahkan antara "y
 ### 2.1 Diagram
 
 ```mermaid
+%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%
 flowchart LR
   M(["Mahasiswa"])
   D(["Dosen PA"])
@@ -141,27 +142,23 @@ hitam sebagai *initial node*, belah ketupat sebagai *decision node*, dan bulatan
 **Penanggung jawab:** Yuniar Zahra Wiyani (60124004) · **FR-01, FR-02**
 
 ```mermaid
+%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
-  A([Mulai]) --> B[Buka tab Jurnal]
-  B --> C[Sistem memuat state dari localStorage]
-  C --> D[Tampilkan formulir dan riwayat sesi]
-  D --> E[Mahasiswa mengisi tanggal, durasi, jenis, tidur, HP, mandiri]
-  E --> F{Validasi lolos?}
-  F -->|Tidak| G[Tampilkan pesan galat di bawah kolom]
-  G --> E
-  F -->|Ya| H[Simpan sesi ke dalam array state]
-  H --> I[Tulis state ke localStorage]
-  I --> J[Perbarui ringkasan dasbor dan hasil analisis]
-  J --> K[Tampilkan toast dan konfeti bila target harian tercapai]
-  K --> L{Mengubah atau menghapus sesi?}
-  L -->|Ubah| M[Muat nilai sesi ke formulir]
-  M --> E
-  L -->|Hapus| N[Konfirmasi lewat lembar bawah]
-  N --> O{Hapus disetujui?}
-  O -->|Tidak| D
-  O -->|Ya| P[Hapus sesi dari state dan localStorage]
-  P --> J
-  L -->|Tidak| Q([Selesai])
+  A([Mulai]) --> B[Buka tab Jurnal, muat state]
+  B --> C[Isi formulir sesi]
+  C --> D{Validasi lolos?}
+  D -->|Tidak| E[Tampilkan galat per kolom]
+  E --> C
+  D -->|Ya| F[Simpan ke state dan localStorage]
+  F --> G[Perbarui ringkasan dan umpan balik]
+  G --> H{Ubah atau hapus?}
+  H -->|Ubah| I[Muat nilai ke formulir]
+  I --> C
+  H -->|Hapus| J{Hapus disetujui?}
+  J -->|Ya| K[Hapus sesi dan simpan]
+  K --> G
+  J -->|Tidak| L([Selesai])
+  H -->|Tidak| L
 ```
 
 **Penjelasan.** Diagram ini menggambarkan siklus hidup satu catatan sesi belajar: dibuat, divalidasi,
@@ -187,29 +184,22 @@ untuk konfirmasi hapus.
 **Penanggung jawab:** Aninda Rizqi Amelia (60124009) · **FR-03, FR-08**
 
 ```mermaid
+%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
-  A([Mulai]) --> B[Buka aplikasi]
-  B --> C[Muat state dari localStorage]
-  C --> D{Ada data sesi?}
-  D -->|Tidak| E[Tampilkan keadaan kosong dan ilustrasi ajakan mencatat]
-  E --> F([Selesai])
-  D -->|Ya| G[Hitung ringkasan pekan: total jam, rata-rata durasi, runtutan hari]
-  G --> H[Tampilkan kartu statistik dan cincin capaian target]
-  H --> I{Pindah ke tab Laporan?}
-  I -->|Tidak| J([Selesai])
-  I -->|Ya| K[Susun tabel rekap per pekan]
-  K --> L[Hitung regresi linear atas 6 pekan terakhir]
-  L --> M{Titik data cukup?}
-  M -->|Kurang dari 2| N[Tampilkan catatan bahwa proyeksi belum dapat dihitung]
-  M -->|Cukup| O[Tampilkan garis proyeksi dan nilai R kuadrat]
-  N --> P[Tampilkan ringkasan cluster dan tabel rincian]
-  O --> P
-  P --> Q{Cetak atau ekspor?}
-  Q -->|Cetak| R[Panggil dialog cetak peramban]
-  Q -->|Ekspor CSV| S[Unduh berkas CSV rekap]
-  Q -->|Tidak| T([Selesai])
-  R --> T
-  S --> T
+  A([Mulai]) --> B[Buka aplikasi, muat state]
+  B --> C{Ada data sesi?}
+  C -->|Tidak| D[Tampilkan keadaan kosong] --> E([Selesai])
+  C -->|Ya| F[Hitung ringkasan pekan]
+  F --> G[Tampilkan kartu statistik dan cincin target]
+  G --> H{Buka laporan?}
+  H -->|Tidak| E
+  H -->|Ya| I[Susun rekap pekan dan hitung regresi]
+  I --> J[Tampilkan proyeksi atau catatan bila data kurang]
+  J --> K[Tampilkan ringkasan kelompok]
+  K --> L{Cetak atau ekspor?}
+  L -->|Cetak| M[Dialog cetak peramban] --> E
+  L -->|Ekspor| N[Unduh CSV] --> E
+  L -->|Tidak| E
 ```
 
 **Penjelasan.** Diagram ini menegaskan bahwa laporan **tidak menghitung ulang apa pun secara mandiri** —
@@ -234,31 +224,22 @@ ketimbang menampilkan garis datar yang menyesatkan.
 **Penanggung jawab:** Maheswari Pasa Putri Syamsudar (60124010) · **FR-04, FR-05**
 
 ```mermaid
+%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
   A([Mulai]) --> B[Buka tab Analisis]
-  B --> C{Baris data lebih dari atau sama dengan k?}
-  C -->|Tidak| D[Tampilkan pesan data belum mencukupi]
-  D --> E([Selesai])
-  C -->|Ya| F[Bentuk matriks 6 fitur dari setiap baris]
-  F --> G[Standardisasi z-score per kolom]
-  G --> H[Inisialisasi centroid dengan k-means++ bibit 42]
-  H --> I[Hitung jarak Euclidean tiap titik ke tiap centroid]
-  I --> J[Tetapkan label ke centroid terdekat]
-  J --> K[Hitung ulang centroid sebagai rata-rata anggotanya]
-  K --> L{Centroid kosong?}
-  L -->|Ya| M[Pindahkan centroid ke titik terjauh dari centroid lain]
-  M --> I
-  L -->|Tidak| N{Pergeseran di bawah 1e-6 atau 300 iterasi?}
-  N -->|Belum| I
-  N -->|Sudah| O[Hitung SSE dan silhouette score]
-  O --> P{Silhouette di atas 0,25?}
-  P -->|Tidak| Q[Tandai kualitas cluster rendah pada catatan hasil]
-  P -->|Ya| R[Lanjut tanpa catatan]
-  Q --> S[Hitung skor berbobot tiap cluster]
-  R --> S
-  S --> T[Berikan nama cluster dan warna]
-  T --> U[Gambar scatter, radar, batang profil, dan elbow]
-  U --> V([Selesai])
+  B --> C{Baris data cukup?}
+  C -->|Tidak| D[Tampilkan pesan data belum mencukupi] --> E([Selesai])
+  C -->|Ya| F[Bentuk matriks enam fitur lalu standardisasi z-score]
+  F --> G[Inisialisasi centroid k-means++ bibit 42]
+  G --> H[Tetapkan label, perbarui centroid]
+  H --> I{Centroid kosong?}
+  I -->|Ya| J[Pindahkan centroid ke titik terjauh]
+  J --> H
+  I -->|Tidak| K{Konvergen atau 300 iterasi?}
+  K -->|Belum| H
+  K -->|Sudah| L[Hitung SSE, silhouette, skor, dan nama kelompok]
+  L --> M[Gambar scatter, radar, batang, dan elbow]
+  M --> N([Selesai])
 ```
 
 **Penjelasan.** Ini diagram paling padat karena menggambarkan inti komponen Data Sains. Tiga hal yang
@@ -287,6 +268,7 @@ lalu `Grafik.sebar()`, `Grafik.radar()`, `Grafik.batang()`, `Grafik.elbow()`.
 **Penanggung jawab:** Hasan (60124013) · **FR-06, FR-07**
 
 ```mermaid
+%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%
 flowchart TD
   A([Mulai]) --> B[Buka tab Dataset]
   B --> C{Pilih aksi}
@@ -345,39 +327,27 @@ belajar" dengan responden sungguhan akan menghasilkan kesimpulan yang menyesatka
 **Penanggung jawab:** Sifa Sabrina (60124023) · **FR-09, FR-10, FR-11**
 
 ```mermaid
+%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
   A([Mulai]) --> B[Buka aplikasi]
   B --> C{Baru pertama kali?}
   C -->|Ya| D[Tampilkan panduan tiga langkah]
-  D --> E{Lewati panduan?}
-  E -->|Ya| F[Tandai sudah kenal dan tutup panduan]
-  E -->|Tidak| G[Langkah 1: apa yang diukur]
-  G --> H[Langkah 2: cara mencatat]
-  H --> I[Langkah 3: cara membaca cluster]
-  I --> F
-  C -->|Tidak| J[Muat preferensi tersimpan]
-  F --> J
-  J --> K[Terapkan tema dan target harian]
-  K --> L{Buka pengaturan?}
-  L -->|Ya| M[Ubah nama, target harian, k, tema]
-  M --> N[Simpan preferensi ke localStorage]
-  N --> K
-  L -->|Tidak| O{Sudah ada data sesi?}
-  O -->|Tidak| P[Tampilkan saran ajakan mencatat]
-  O -->|Ya| Q[Periksa aturan saran secara berurutan]
-  Q --> R{Tidur kurang dari 6 jam?}
-  R -->|Ya| S[Tampilkan saran perbaikan tidur]
-  R -->|Tidak| T{HP saat belajar lebih dari 3 jam?}
-  T -->|Ya| U[Tampilkan saran mengurangi gangguan]
-  T -->|Tidak| V{Runtutan hari kurang dari 3?}
-  V -->|Ya| W[Tampilkan saran menjaga konsistensi]
-  V -->|Tidak| X[Tampilkan posisi cluster dan saran sesuai profil]
-  S --> Y[Tampilkan gelembung Nora]
-  U --> Y
-  W --> Y
-  X --> Y
-  P --> Y
-  Y --> Z([Selesai])
+  C -->|Tidak| E[Muat preferensi dan terapkan tema]
+  D --> E
+  E --> F{Buka pengaturan?}
+  F -->|Ya| G[Ubah nama, target, k, dan tema]
+  G --> H[Simpan preferensi]
+  H --> E
+  F -->|Tidak| I{Periksa aturan saran}
+  I -->|Tidur kurang| J[Saran perbaikan tidur]
+  I -->|Ponsel berlebih| K[Saran mengurangi gangguan]
+  I -->|Runtutan kurang| L[Saran menjaga konsistensi]
+  I -->|Tidak ada| M[Saran posisi kelompok]
+  J --> N[Tampilkan gelembung Nora]
+  K --> N
+  L --> N
+  M --> N
+  N --> O([Selesai])
 ```
 
 **Penjelasan.** Diagram ini menggambarkan lapisan yang membuat aplikasi terasa seperti pembimbing,
