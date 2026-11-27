@@ -53,7 +53,6 @@ Tiga prinsip yang dipegang:
 ### 2.2 Diagram arsitektur
 
 ```mermaid
-%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%
 flowchart TB
   subgraph KLIEN["Lapisan Presentasi — peramban"]
     direction TB
@@ -112,7 +111,6 @@ tidak cukup bila dosen PA perlu membaca data mahasiswa bimbingannya. Karena itu 
 peningkatan tanpa membongkar arsitektur:
 
 ```mermaid
-%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%
 flowchart LR
   subgraph P["Peramban"]
     SPA["StudyTrack<br/>HTML + CSS + JS"]
@@ -145,7 +143,6 @@ dengan tiga operasi (`muat`, `simpan`, `hapus`) — ia adalah satu-satunya titik
 ### 2.5 Alur data satu siklus penuh
 
 ```mermaid
-%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%
 flowchart LR
   A["Mahasiswa mencatat sesi"] --> B["state.sesi bertambah"]
   B --> C["Penyimpanan.simpan"]
@@ -474,7 +471,6 @@ Antarmuka memakai **satu halaman dengan lima tab** dan **lembar bawah (bottom sh
 sementara. Tidak ada halaman terpisah, tidak ada muat ulang antar bagian.
 
 ```mermaid
-%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%
 flowchart LR
   ROOT["Aplikasi"] --> D["Dasbor"]
   ROOT --> J["Jurnal"]

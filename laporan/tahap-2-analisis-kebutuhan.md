@@ -342,7 +342,6 @@ flowchart TD
 ### 5.2 Alur pengelolaan dataset
 
 ```mermaid
-%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%
 flowchart LR
     A["Dataset bawaan 90 responden"] --> B{"Data survei asli tersedia?"}
     B -- Belum --> C["Dipakai untuk demo dan pengujian"]

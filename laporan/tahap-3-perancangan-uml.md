@@ -50,7 +50,6 @@ spesifikasi bagian 3 butir 4 dan bagian 8: pengerjaan tidak dipisahkan antara "y
 ### 2.1 Diagram
 
 ```mermaid
-%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%
 flowchart LR
   M(["Mahasiswa"])
   D(["Dosen PA"])
@@ -268,7 +267,6 @@ lalu `Grafik.sebar()`, `Grafik.radar()`, `Grafik.batang()`, `Grafik.elbow()`.
 **Penanggung jawab:** Hasan (60124013) · **FR-06, FR-07**
 
 ```mermaid
-%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%
 flowchart TD
   A([Mulai]) --> B[Buka tab Dataset]
   B --> C{Pilih aksi}
