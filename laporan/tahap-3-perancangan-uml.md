@@ -141,7 +141,6 @@ hitam sebagai *initial node*, belah ketupat sebagai *decision node*, dan bulatan
 **Penanggung jawab:** Yuniar Zahra Wiyani (60124004) · **FR-01, FR-02**
 
 ```mermaid
-%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
   A([Mulai]) --> B[Buka tab Jurnal, muat state]
   B --> C[Isi formulir sesi]
@@ -183,7 +182,6 @@ untuk konfirmasi hapus.
 **Penanggung jawab:** Aninda Rizqi Amelia (60124009) · **FR-03, FR-08**
 
 ```mermaid
-%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
   A([Mulai]) --> B[Buka aplikasi, muat state]
   B --> C{Ada data sesi?}
@@ -223,7 +221,6 @@ ketimbang menampilkan garis datar yang menyesatkan.
 **Penanggung jawab:** Maheswari Pasa Putri Syamsudar (60124010) · **FR-04, FR-05**
 
 ```mermaid
-%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
   A([Mulai]) --> B[Buka tab Analisis]
   B --> C{Baris data cukup?}
@@ -325,7 +322,6 @@ belajar" dengan responden sungguhan akan menghasilkan kesimpulan yang menyesatka
 **Penanggung jawab:** Sifa Sabrina (60124023) · **FR-09, FR-10, FR-11**
 
 ```mermaid
-%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
   A([Mulai]) --> B[Buka aplikasi]
   B --> C{Baru pertama kali?}

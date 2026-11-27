@@ -320,7 +320,6 @@ Setiap NFR diberi tolok ukur yang dapat diperiksa, bukan pernyataan sifat.
 ### 5.1 Alur utama
 
 ```mermaid
-%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
     A(["Mahasiswa membuka aplikasi"]) --> B{"Sudah ada data sesi?"}
     B -- Belum --> C["Panduan awal tiga langkah"]
@@ -367,7 +366,6 @@ flowchart LR
 ### 5.4 Alur komponen Data Sains
 
 ```mermaid
-%%%%{init: {"flowchart": {"wrappingWidth": 340, "nodeSpacing": 45, "rankSpacing": 50}}}%%%%
 flowchart TD
     A(["Masukan: baris responden"]) --> B["Vektor enam fitur"]
     B --> C["Standardisasi z-score per kolom"]
